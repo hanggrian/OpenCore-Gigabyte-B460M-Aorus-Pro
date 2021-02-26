@@ -1,5 +1,7 @@
 OpenCore Gigabyte B460M Aorus Pro
 =================================
+![Screenshot](/art/screenshot.png)
+
 OpenCore configurations for Gigabyte B460M Aorus Pro.
 [Dortania's Install Guide](https://dortania.github.io/OpenCore-Install-Guide/) is your friend.
 
