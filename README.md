@@ -7,7 +7,7 @@ OpenCore configurations for Gigabyte B460M Aorus Pro.
 
 Hardware
 --------
-* Intel Core i5-8400
+* Intel Core i5-10400
 * Sapphire Pulse RX 580 8GB
 * 4x8GB Corsair Vengeance LPX DDR4 2666MHz
 * Samsung 970 EVO NVMe M.2 250GB
