@@ -16,5 +16,6 @@ Hardware
 Configuration
 -------------
 * `RELEASE` version of [OpenCore Releases](https://github.com/acidanthera/OpenCorePkg/releases).
-* Post-Install [OpenCore's GUI](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html)
+* Always use [Prebuilt SSDT](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-platform.html#desktop).
+* Post-Install [OpenCore's GUI](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui)
 * `Microsoft` directory is optional, it is a Windows multiboot on different drive.
