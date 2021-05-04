@@ -3,7 +3,6 @@ OpenCore Gigabyte B460M Aorus Pro
 ![Screenshot](/art/screenshot.png)
 
 OpenCore configurations for Gigabyte B460M Aorus Pro.
-[Dortania's Install Guide](https://dortania.github.io/OpenCore-Install-Guide/) is your friend.
 
 Hardware
 --------
@@ -15,7 +14,13 @@ Hardware
 
 Configuration
 -------------
-* `RELEASE` version of [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases).
-* Always use prebuilt [SSDT files](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-platform.html#desktop).
-* Post-Install: [Setting up GUI](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui).
+* `RELEASE` version of [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) and all kexts.
+* Always use prebuilt SSDTs.
+* Setup GUI with modern look.
 * `Microsoft` directory is optional, it is a Windows multiboot on different drive.
+
+Resources
+---------
+* [Desktop ACPI](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-platform.html#desktop)
+* [Desktop Comet Lake config.plist](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html)
+* [Post-Install: Setting up GUI](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui).
