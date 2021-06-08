@@ -1,0 +1,12 @@
+language: minimal
+
+env:
+  - OC_VERSION="0.7.0" OC_FILE="OpenCore-$OC_VERSION-RELEASE"
+
+before_install:
+  - sudo apt-get -y install unzip
+
+script:
+  - curl -OL https://github.com/acidanthera/OpenCorePkg/releases/download/$OC_VERSION/$OC_FILE.zip
+  - unzip $OC_FILE.zip -d $OC_FILE
+  - $OC_FILE/Utilities/ocvalidate/ocvalidate $TRAVIS_BUILD_DIR/EFI/OC/config.plist

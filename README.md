@@ -1,3 +1,6 @@
+[![version](https://img.shields.io/github/release/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro)](https://github.com/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro/releases)
+[![build](https://img.shields.io/travis/com/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro)](https://www.travis-ci.com/github/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro)
+
 OpenCore Gigabyte B460M Aorus Pro
 =================================
 
