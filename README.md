@@ -13,17 +13,15 @@ OpenCore configurations for Gigabyte B460M Aorus Pro.
 * Samsung 970 EVO NVMe M.2 250GB
 * Corsair Force MP300 NVMe M.2 120GB (Windows Boot)
 
-Configuration
--------------
+Note
+----
 
+Minimal configuration is applied for every release. This means:
 * `RELEASE` version of [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) and all kexts.
-* Latest [OcBinaryData](https://github.com/acidanthera/OcBinaryData), required for `HfsPlus.efi` and setting up GUI.
-* Always use prebuilt SSDTs.
-* `Microsoft` directory is optional, it is a Windows multiboot on different drive.
+* Latest [OcBinaryData](https://github.com/acidanthera/OcBinaryData), required for `HfsPlus.efi` and [setting up GUI](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui).
+* Prebuilt SSDTs from [Dortania](https://github.com/dortania/Getting-Started-With-ACPI/tree/master/extra-files/compiled).
+* Only configure what's recommended for [Desktop Comet Lake config.plist](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html).
 
-Resources
----------
+`EFI/Microsoft` directory is optional, it is a Windows multiboot on different drive.
 
-* [Desktop ACPI](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-platform.html#desktop)
-* [Desktop Comet Lake config.plist](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html)
-* [Post-Install: Setting up GUI](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui).
+There is also `download-latest.sh` that gathers all the necessary files for new updates.
