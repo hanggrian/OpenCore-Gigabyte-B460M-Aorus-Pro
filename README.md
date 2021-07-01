@@ -4,7 +4,7 @@
 OpenCore Gigabyte B460M Aorus Pro
 =================================
 
-![screenshot](art/screenshot.png)
+![](art/screenshot.png)
 
 OpenCore configurations for Gigabyte B460M Aorus Pro.
 * Intel Core i5-10400
@@ -24,4 +24,4 @@ Minimal configuration is applied for every release. This means:
 
 `EFI/Microsoft` directory is optional, it is a Windows multiboot on different drive.
 
-There is also `download-latest.sh` that gathers all the necessary files for new updates.
+There is also `download_latest.sh` that gathers all the necessary files for new updates.
