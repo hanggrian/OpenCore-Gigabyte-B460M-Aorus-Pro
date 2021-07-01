@@ -1,10 +1,11 @@
 language: minimal
 
 before_install:
+  - sudo apt-get -y install jq
   - sudo apt-get -y install unzip
 
 script:
-  - OC_VERSION=$(curl https://api.github.com/repos/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro/releases/latest | $TRAVIS_BUILD_DIR/jq-osx-amd64 '.name' | tr -d '"')
+  - OC_VERSION=$(curl https://api.github.com/repos/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro/releases/latest | jq '.name' | tr -d '"')
   - OC_FILE=OpenCore-$OC_VERSION-RELEASE
   - curl -OL https://github.com/acidanthera/OpenCorePkg/releases/download/$OC_VERSION/$OC_FILE.zip
   - unzip $OC_FILE.zip -d $OC_FILE
