@@ -4,7 +4,7 @@
 OpenCore Gigabyte B460M Aorus Pro
 =================================
 
-![](art/screenshot.png)
+![](images/screenshot.png)
 
 OpenCore configurations for Gigabyte B460M Aorus Pro.
 * Intel Core i5-10400
