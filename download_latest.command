@@ -57,6 +57,11 @@ extract() {
     rm -rf "$file.zip"
 }
 
+JQ_VERSION="jq-1.6"
+JQ_FILE="jq-osx-amd64"
+download_github_release "stedolan" "jq" "$JQ_VERSION" "$JQ_FILE"
+chmod +x "$JQ_FILE"
+
 OC_VERSION=$(get_github_latest_release_version acidanthera OpenCorePkg)
 OC_FILE="OpenCore-$OC_VERSION-RELEASE"
 download_github_release "acidanthera" "OpenCorePkg" "$OC_VERSION" "$OC_FILE.zip"
@@ -75,3 +80,5 @@ pull_kext "NVMeFix"
 pull_ssdt "SSDT-AWAC"
 pull_ssdt "SSDT-EC-USBX-DESKTOP"
 pull_ssdt "SSDT-PLUG-DRTNIA"
+
+rm -rf "$JQ_FILE"

@@ -24,4 +24,5 @@ Minimal configuration is applied for every release. This means:
 
 `EFI/Microsoft` directory is optional, it is a Windows multiboot on different drive.
 
-There is also `download_latest.sh` that gathers all the necessary files for new updates.
+There is also `download_latest.command` that gathers all the necessary files for new updates.
+Run `chmod +x download_latest.command` to double-click it, or by terminal.
