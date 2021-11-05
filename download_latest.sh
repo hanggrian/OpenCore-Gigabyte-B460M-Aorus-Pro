@@ -70,15 +70,16 @@ extract "$OC_FILE"
 download_github_archive "acidanthera" "OcBinaryData" "master"
 extract "OcBinaryData"
 
+pull_ssdt "SSDT-AWAC"
+pull_ssdt "SSDT-EC-USBX-DESKTOP"
+pull_ssdt "SSDT-PLUG-DRTNIA"
+
 pull_kext "Lilu"
 pull_kext "VirtualSMC"
 pull_kext "WhateverGreen"
 pull_kext "AppleALC"
 pull_kext "IntelMausi"
 pull_kext "NVMeFix"
-
-pull_ssdt "SSDT-AWAC"
-pull_ssdt "SSDT-EC-USBX-DESKTOP"
-pull_ssdt "SSDT-PLUG-DRTNIA"
+pull_kext "BrcmPatchRAM"
 
 rm -rf "$JQ_FILE"
