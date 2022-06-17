@@ -1,5 +1,7 @@
 #!/bin/bash
 
+if ! command -v jq &> /dev/null; then error "jq is not installed"; fi
+
 pull_kext() {
     local name=$1
     local version=$(get_github_latest_release_version acidanthera $name)
@@ -25,7 +27,7 @@ pull_ssdt() {
 get_github_latest_release_version() {
     local owner=$1
     local repo=$2
-    curl "https://api.github.com/repos/$owner/$repo/releases/latest" | ./jq-osx-amd64 ".name" | tr -d '"'
+    curl "https://api.github.com/repos/$owner/$repo/releases/latest" | jq ".name" | tr -d '"'
 }
 
 download_github_release() {
@@ -57,15 +59,10 @@ extract() {
     rm -rf "$file.zip"
 }
 
-JQ_VERSION="jq-1.6"
-JQ_FILE="jq-osx-amd64"
-download_github_release "stedolan" "jq" "$JQ_VERSION" "$JQ_FILE"
-chmod +x "$JQ_FILE"
-
-OC_VERSION=$(get_github_latest_release_version acidanthera OpenCorePkg)
-OC_FILE="OpenCore-$OC_VERSION-RELEASE"
-download_github_release "acidanthera" "OpenCorePkg" "$OC_VERSION" "$OC_FILE.zip"
-extract "$OC_FILE"
+oc_version=$(get_github_latest_release_version acidanthera OpenCorePkg)
+oc_file="OpenCore-$oc_version-RELEASE"
+download_github_release "acidanthera" "OpenCorePkg" "$oc_version" "$oc_file.zip"
+extract "$oc_file"
 
 download_github_archive "acidanthera" "OcBinaryData" "master"
 extract "OcBinaryData"
@@ -81,5 +78,3 @@ pull_kext "AppleALC"
 pull_kext "IntelMausi"
 pull_kext "NVMeFix"
 pull_kext "BrcmPatchRAM"
-
-rm -rf "$JQ_FILE"
