@@ -1,9 +1,9 @@
-[![Travis CI](https://img.shields.io/travis/com/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro)](https://www.travis-ci.com/github/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro/)
+[![Travis CI](https://img.shields.io/travis/com/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro)](https://travis-ci.com/github/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro/)
 [![GitHub Releases](https://img.shields.io/github/release/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro)](https://github.com/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro/releases/)
 
 # OpenCore Gigabyte B460M Aorus Pro
 
-![Screenshot](images/screenshot.png)
+![Preview](assets/preview.png)
 
 OpenCore configurations for Gigabyte B460M Aorus Pro.
 
@@ -15,7 +15,7 @@ OpenCore configurations for Gigabyte B460M Aorus Pro.
 
 ## Note
 
-Minimal configuration is applied for every release. This means:
+Minimal configuration is applied for every release, this means:
 
 - `RELEASE` version of [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases/) and all kexts.
 - Latest [OcBinaryData](https://github.com/acidanthera/OcBinaryData/), required for `HfsPlus.efi` and [setting up GUI](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui).
@@ -24,12 +24,12 @@ Minimal configuration is applied for every release. This means:
 
 ### `config.plist` Configuration
 
-- DeviceProperties > Add > PciRoot(0x0)/Pci(0x2,0x0)
-  - `AAPL,ig-platform-id` set to `0300C89B` because dedicated GPU is installed.
-- Kernel > Quirks
-  - `AppleXcpmCfgLock` disabled because `CFG-Lock` is disabled in BIOS.
-  - `DisableIoMapper` enabled because `VT-D` is enabled in BIOS.
-  - `XhciPortLimit` disabled because running macOS 11.3+.
+| Key | Value | Reason |
+|---|---|---|
+| DeviceProperties > Add > PciRoot(0x0)/Pci(0x2,0x0) > AAPL,ig-platform-id | 0300C89B | iGPU doesn't drive display because dedicated GPU is present. |
+| Kernel > Quirks > AppleXcpmCfgLock | False | `CFG-Lock` is disabled in BIOS. |
+| Kernel > Quirks > DisableIoMapper | True | `VT-D` is enabled in BIOS. |
+| Kernel > Quirks > XhciPortLimit | False | Running macOS 11.3+. |
 
 `EFI/Microsoft` directory is optional, it is a Windows multiboot on different drive.
 
