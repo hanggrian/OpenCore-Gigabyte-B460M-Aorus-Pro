@@ -3,7 +3,7 @@
 
 # OpenCore Gigabyte B460M Aorus Pro
 
-![Preview](assets/preview.png)
+![Installation screenshot.](assets/screen.png)
 
 OpenCore configurations for Gigabyte B460M Aorus Pro.
 
