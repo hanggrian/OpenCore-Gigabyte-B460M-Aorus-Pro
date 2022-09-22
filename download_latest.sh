@@ -14,7 +14,7 @@ fi
 
 pull_kext() {
   local name=$1
-  local version=$(get_github_latest_release_version "acidanthera" "$name")
+  local version="$(get_github_latest_release_version "acidanthera" "$name")"
   local file="$name-$version-RELEASE"
   download_github_release "acidanthera" "$name" "$version" "$file.zip"
   extract "$file"
@@ -73,7 +73,7 @@ echo
 echo "${YELLOW}Downloading OpenCore...$END"
 echo
 
-oc_version=$(get_github_latest_release_version "acidanthera" "OpenCorePkg")
+oc_version="$(get_github_latest_release_version "acidanthera" "OpenCorePkg")"
 oc_file="OpenCore-$oc_version-RELEASE"
 download_github_release "acidanthera" "OpenCorePkg" "$oc_version" "$oc_file.zip"
 extract "$oc_file"
