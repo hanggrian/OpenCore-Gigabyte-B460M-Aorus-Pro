@@ -3,7 +3,7 @@
 
 # OpenCore Gigabyte B460M Aorus Pro
 
-![Installation screenshot.](assets/screenshot.png)
+![Installation screenshot.](https://github.com/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro/raw/assets/screenshot.png)
 
 OpenCore configurations for Gigabyte B460M Aorus Pro.
 
@@ -20,14 +20,17 @@ OpenCore configurations for Gigabyte B460M Aorus Pro.
 Minimal configuration is applied for every release, this means:
 
 - `RELEASE` version of [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases/) and all kexts.
-- Latest [OcBinaryData](https://github.com/acidanthera/OcBinaryData/),
-required for `HfsPlus.efi` and [setting up GUI](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui).
+- Latest [OcBinaryData](https://github.com/acidanthera/OcBinaryData/).
 - Prebuilt SSDTs from [Dortania](https://github.com/dortania/Getting-Started-With-ACPI/tree/master/extra-files/compiled/).
+- Few post-install treatments:
+  - [Universal: Boot without USB].
+  - [Cosmetic: Hide Verbose], but still generate debugging .txt file.
+  - [Cosmetic: Add GUI], but not boot-chime.
+  - [Multiboot: Set LauncherOption], not necessary for single-boot system.
 
 ### config.plist
 
-Aside from the vanilla configuration of [Desktop Comet Lake config.plist](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html),
-there is small changes to `config.plist`.
+Aside from the vanilla configuration of [Desktop Comet Lake config.plist], there is small changes to `config.plist`.
 
 | Key | Value | Note |
 | --- | --- | --- |
@@ -63,6 +66,30 @@ The rest of settings that are not found:
 - Execute Disable Bit
 - DVMT Pre-Allocated (iGPU Memory)
 
+> Do not change settings not listed here.
+  For example, enabling `Extreme Memory Profile (XMP)` may seem like a good idea,
+  but specifically [discouraged](https://dortania.github.io/Anti-Hackintosh-Buyers-Guide/RAM.html).
+
 ## Updating
 
 Use `download_latest.sh` to gathers all the necessary files for new updates.
+Then follow the steps:
+- Use `OpenCore-$version-RELEASE/X64/EFI/` as main directory.
+- Remove everything from `EFI/OC/Drivers/` except `OpenCanopy.efi` and `OpenRuntime.efi`.
+- Move downloaded folders' content to `EFI/`:
+  - Some `Kexts/` to `EFI/OC/Kexts/`, see [here](EFI/OC/Kexts/) for the list.
+  - All `ACPI/` to `EFI/OC/ACPI/`.
+  - `OcBinaryData/Drivers/HfsPlus.efi` to `EFI/OC/Drivers/`.
+  - All `OcBinaryData/Resources/` to `EFI/OC/Resources/` but keep only one of 3 image sets,
+    part of post-install [Cosmetic: Add GUI].
+- Prepare `config.plist`:
+  - Copy and rename `OpenCore-$version-RELEASE/Docs/Sample.plist` to `EFI/OC/config.plist`.
+  - Apply basic [Desktop Comet Lake config.plist] and [custom configuration](#configplist).
+  - Apply changes from post-install [Cosmetic: Hide Verbose], [Cosmetic: Add GUI], and [Multiboot: Set LauncherOption]
+- Move `EFI/` to drive's EFI partition, part of post-install [Universal: Boot without USB].
+
+[Desktop Comet Lake config.plist]: https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html
+[Universal: Boot without USB]: https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd.html
+[Cosmetic: Hide Verbose]: https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose.html
+[Cosmetic: Add GUI]: https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html
+[Multiboot: Set LauncherOption]: https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html
