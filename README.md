@@ -24,7 +24,7 @@ Minimal configuration is applied for every release, this means:
 - Prebuilt SSDTs from [Dortania](https://github.com/dortania/Getting-Started-With-ACPI/tree/master/extra-files/compiled/).
 - Few post-install treatments:
   - [Universal: Boot without USB].
-  - [Cosmetic: Hide Verbose], but still generate debugging .txt file.
+  - [Cosmetic: Hide Verbose].
   - [Cosmetic: Add GUI], but not boot-chime.
   - [Multiboot: Set LauncherOption], not necessary for single-boot system.
 
