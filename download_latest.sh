@@ -13,7 +13,7 @@ if ! command -v jq &> /dev/null; then
 fi
 
 pull_kext() {
-  local name=$1
+  local name="$1"
   local version="$(get_github_latest_release_version "acidanthera" "$name")"
   local file="$name-$version-RELEASE"
   download_github_release "acidanthera" "$name" "$version" "$file.zip"
@@ -27,7 +27,7 @@ pull_kext() {
 }
 
 pull_ssdt() {
-  local name=$1
+  local name="$1"
   download_github_raw "dortania" "Getting-Started-With-ACPI" "master" "extra-files/compiled/$name.aml"
 
   mkdir -p "ACPI"
@@ -35,36 +35,36 @@ pull_ssdt() {
 }
 
 get_github_latest_release_version() {
-  local owner=$1
-  local repo=$2
+  local owner="$1"
+  local repo="$2"
   curl "https://api.github.com/repos/$owner/$repo/releases/latest" | jq ".name" | tr -d '"'
 }
 
 download_github_release() {
-  local owner=$1
-  local repo=$2
-  local version=$3
-  local file=$4
+  local owner="$1"
+  local repo="$2"
+  local version="$3"
+  local file="$4"
   curl -OL "https://github.com/$owner/$repo/releases/download/$version/$file"
 }
 
 download_github_archive() {
-  local owner=$1
-  local repo=$2
-  local branch=$3
+  local owner="$1"
+  local repo="$2"
+  local branch="$3"
   curl -L "http://github.com/$owner/$repo/archive/$branch.zip" -o "$repo.zip"
 }
 
 download_github_raw() {
-  local owner=$1
-  local repo=$2
-  local branch=$3
-  local path=$4
+  local owner="$1"
+  local repo="$2"
+  local branch="$3"
+  local path="$4"
   curl -OL "https://github.com/$owner/$repo/raw/$branch/$path"
 }
 
 extract() {
-  local file=$1
+  local file="$1"
   unzip "$file.zip" -d "$file"
   rm -rf "$file.zip"
 }

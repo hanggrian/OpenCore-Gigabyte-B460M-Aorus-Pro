@@ -33,7 +33,7 @@ Minimal configuration is applied for every release, this means:
 Aside from the vanilla configuration of [Desktop Comet Lake config.plist], there is small changes to `config.plist`.
 
 | Key | Value | Note |
-| --- | --- | --- |
+| --- | :---: | --- |
 | DeviceProperties > Add > PciRoot(0x0)/Pci(0x2,0x0) > AAPL,ig-platform-id | 0300C89B | iGPU doesn't drive display because dedicated GPU is present. |
 | Kernel > Quirks > AppleXcpmCfgLock | False | `CFG-Lock` is disabled in BIOS. |
 | Kernel > Quirks > DisableIoMapper | True | `VT-D` is enabled in BIOS. |
