@@ -5,8 +5,8 @@ before_install:
   - sudo apt-get -y install unzip
 
 script:
-  - oc_version="$(curl "https://api.github.com/repos/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro/releases/latest" | jq ".name" | tr -d '"')"
+  - oc_version=$(curl "https://api.github.com/repos/hendraanggrian/OpenCore-Gigabyte-B460M-Aorus-Pro/releases/latest" | jq ".name" | tr -d '"')
   - oc_file="OpenCore-$oc_version-RELEASE"
   - curl -OL "https://github.com/acidanthera/OpenCorePkg/releases/download/$oc_version/$oc_file.zip"
   - unzip "$oc_file.zip" -d "$oc_file"
-  - "$oc_file/Utilities/ocvalidate/ocvalidate.linux" "$TRAVIS_BUILD_DIR/EFI/OC/config.plist"
+  - $oc_file/Utilities/ocvalidate/ocvalidate.linux "$TRAVIS_BUILD_DIR/EFI/OC/config.plist"
