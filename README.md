@@ -11,6 +11,8 @@ OpenCore configurations for Gigabyte B460M Aorus Pro.
 | --- | --- |
 | Intel Core i5-10400 | SMBIOS |
 | Sapphire Pulse RX 580 8GB | AAPL,ig-platform-id |
+| Samsung SSD 970 EVO 250GB | NVMeFix.kext |
+| Fenvi FV-T919 | BlueToolFixup.kext<br>IO80211FamilyLegacy.kext<br>IOSkywalkFamily.kext |
 
 > `EFI/Microsoft` directory is optional, it is a Windows multiboot on separate drive.
 
@@ -21,15 +23,16 @@ Minimal configuration is applied for every release, this means:
 - `RELEASE` version of [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases/) and all kexts.
 - Latest [OcBinaryData](https://github.com/acidanthera/OcBinaryData/).
 - Prebuilt SSDTs from [Dortania](https://github.com/dortania/Getting-Started-With-ACPI/tree/master/extra-files/compiled/).
-- Few post-install treatments:
+- Post-install treatments:
   - [Universal: Boot without USB].
   - [Cosmetic: Hide Verbose].
   - [Cosmetic: Add GUI], but not boot-chime.
   - [Multiboot: Set LauncherOption], not necessary for single-boot system.
+- OpenCore Legacy Patcher version 0.6.9 early preview, as documented [here](https://www.tonymacx86.com/threads/fenvi-t919-wifi-back-in-sonoma-with-oclp-early-preview.326545/).
 
 ### config.plist
 
-Aside from the vanilla configuration of [Desktop Comet Lake config.plist], there is small changes to `config.plist`.
+Aside from the vanilla configuration of [Desktop Comet Lake config.plist], there are small changes to `config.plist`.
 
 | Key | Value | Note |
 | --- | :---: | --- |
@@ -42,21 +45,21 @@ Aside from the vanilla configuration of [Desktop Comet Lake config.plist], there
 
 Below are the settings found in Advanced Mode of BIOS version `F6`.
 
-| Name | Disable | Enable | Note |
-| --- | :---: | :---: | --- |
-| Tweaker &rarr; Advanced CPU Settings &rarr; Hyper-Threading Technology | | &check; | `Auto` also works. |
-| Tweaker &rarr; Advanced CPU Settings &rarr; VT-d | | &check; | Related to `DisableIoMapper`. |
-| Settings &rarr; IO Ports &rarr; Above 4G Decoding | | &check; | |
-| Settings &rarr; IO Ports &rarr; Super IO Configuration &rarr; Serial Port | &check; | | |
-| Settings &rarr; IO Ports &rarr; USB Configuration &rarr; XHCI Hand-off | | &check; | |
-| Settings &rarr; IO Ports &rarr; SATA and RST Configuration &rarr; SATA Mode Selection | | &check; | |
-| Settings &rarr; Miscellaneous &rarr; Intel Platform Trust | &check; | | |
-| Settings &rarr; Miscellaneous &rarr; SGX | &check; | | |
-| Boot &rarr; CFG Lock | &check; | | Related to `AppleXcpmCfgLock`. |
-| Boot &rarr; Fast Boot | &check; | | |
-| Boot &rarr; Windows 10 Features &rarr; Windows 10 | | &check; | `Other OS` also works. |
-| Boot &rarr; CSM Support | &check; | | |
-| Boot &rarr; Secure Boot &rarr; Secure Boot Enable | &check; | | |
+| Name | Enabled | Note |
+| --- | :---: | --- |
+| Tweaker &rarr; Advanced CPU Settings &rarr; Hyper-Threading Technology | &check; | `Auto` also works. |
+| Tweaker &rarr; Advanced CPU Settings &rarr; VT-d | &check; | Related to `DisableIoMapper`. |
+| Settings &rarr; IO Ports &rarr; Above 4G Decoding | &check; | |
+| Settings &rarr; IO Ports &rarr; Super IO Configuration &rarr; Serial Port | &cross; | |
+| Settings &rarr; IO Ports &rarr; USB Configuration &rarr; XHCI Hand-off | &check; | |
+| Settings &rarr; IO Ports &rarr; SATA and RST Configuration &rarr; SATA Mode Selection | &check; | |
+| Settings &rarr; Miscellaneous &rarr; Intel Platform Trust | &cross; | |
+| Settings &rarr; Miscellaneous &rarr; SGX | &cross; | |
+| Boot &rarr; CFG Lock | &cross; | Related to `AppleXcpmCfgLock`. |
+| Boot &rarr; Fast Boot | &cross; | |
+| Boot &rarr; Windows 10 Features &rarr; Windows 10 | &check; | `Other OS` also works. |
+| Boot &rarr; CSM Support | &cross; | |
+| Boot &rarr; Secure Boot &rarr; Secure Boot Enable | &cross; | |
 
 The rest of settings that are not found:
 - Parallel Port
