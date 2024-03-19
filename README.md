@@ -14,8 +14,6 @@ OpenCore configurations for Gigabyte B460M Aorus Pro.
 | Samsung SSD 970 EVO 250GB | NVMeFix.kext |
 | Fenvi FV-T919 | BlueToolFixup.kext<br>IO80211FamilyLegacy.kext<br>IOSkywalkFamily.kext |
 
-> `EFI/Microsoft` directory is optional, it is a Windows multiboot on separate drive.
-
 ## Configuration
 
 Minimal configuration is applied for every release, this means:
